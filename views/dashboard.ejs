@@ -7,14 +7,9 @@
   <body>
     <h1><%= title %></h1>
     <h2><%= user.fullname %></h2>
-    <form action="" method="POST">
-        <!-- <label for="username">Username: </label>
-        <input name="username" type="text" />
-        <label for="password">Password: </label>
-        <input name="password" type="text" />
-        <button type="submit">Log In</button> -->
-    </form>
-    <!-- <a href="/user/create">Sign Up</a> -->
+    <a href=<%= '/yachtclub/message/create/' + user._id %>>New Message</a>
+    <a href="/yachtclub/messages">Message Board</a>
+    <a href="/yachtclub/bouncer">Club Entry</a>
     <a href="/log-out">Log Out</a>
   </body>
 </html>

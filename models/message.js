@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const MessageSchema = new Schema({
     title: { type: String, maxLength: 30, required: true },
     message: { type: String, maxLength: 160, required: true },
-    author: { type: Schema.Types.ObjectId },
+    author: { type: Schema.Types.ObjectId, ref: 'User' },
 })
 
 MessageSchema.virtual('url').get(function() {

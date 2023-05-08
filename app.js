@@ -20,6 +20,7 @@ var app = express();
 mongoose.set('strictQuery', false);
 
 const mongoDB = process.env.MONGO_KEY;
+const clubPassword = process.env.CLUB_PASSWORD;
 
 const main = async() => {
   await mongoose.connect(mongoDB)
@@ -105,4 +106,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app, passport;
+exports.password = clubPassword;
+module.exports = app;

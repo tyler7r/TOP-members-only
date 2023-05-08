@@ -22,9 +22,9 @@ router.get('/user/:id', user_controller.user_dashboard);
 
 router.get('/messages', message_controller.all_messages);
 
-router.get('/message/create', message_controller.create_message_get);
+router.get('/message/create/:id', message_controller.create_message_get);
 
-router.post('/message/create', message_controller.create_message_post);
+router.post('/message/create/:id', message_controller.create_message_post);
 
 router.get('/message/:id', message_controller.message_detail);
 
@@ -33,5 +33,7 @@ router.get('/message/:id', message_controller.message_detail);
 router.get('/bouncer', club_controller.secret_password_get);
 
 router.post('/bouncer', club_controller.secret_password_post);
+
+router.get('/entrysuccess', club_controller.entry_success);
 
 module.exports = router;

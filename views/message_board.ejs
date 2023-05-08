@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% if (member === true) { %>
+        <ul>
+            <% for (let i = 0; i < messages.length; i++ ) { %>
+                <div>
+                    <%= messages[i].author.fullname %>
+                    <%= messages[i].title %>
+                    <%= messages[i].message %>
+                <div>
+    
+            <% } %>
+        </ul>
+    <% } else { %>
+        <ul>
+            <% for (let i = 0; i < messages.length; i++ ) { %>
+                <div>
+                    <%= messages[i].title %>
+                    <%= messages[i].message %>
+                <div>
+    
+            <% } %>
+        </ul>
+    <% } %>
+  </body>
+</html>

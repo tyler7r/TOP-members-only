@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <form action="" method="POST">
+          <label for="title">Title: </label>
+          <input name="title" type="text" maxlength='30' required/>
+          <label for="message">Message: </label>
+          <input name="message" type="textarea" placeholder="What's on your mind?" maxlength='160' required/>
+          <button type="submit">Send</button>
+      </form>
+      <a href="/log-out">Log Out</a>
+  </body>
+</html>

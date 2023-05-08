@@ -27,9 +27,15 @@ exports.log_in_post = [
 ]
 
 exports.user_dashboard = asyncHandler(async (req, res, next) => {
-    console.log(req.user);
+    const user = await User.findById(req.params.id).exec();
+
+    if (user === null) {
+        const err = new Error('User not found')
+        err.status = 404;
+        return next(err)
+    }
     res.render('dashboard', {
-        user: req.user,
+        user: user,
         title: "User Dashboard",
     })
 })

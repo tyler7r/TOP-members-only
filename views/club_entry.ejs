@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <form action="" method="POST">
+          <label for="secret">Secret Code: </label>
+          <input name="secret" type="text" maxlength='15' required/>
+          <button type="submit">Send</button>
+      </form>
+      <a href="/log-out">Log Out</a>
+  </body>
+</html>
