@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 const message_controller = require('../controllers/messageController');
 const user_controller = require('../controllers/userController');
@@ -15,7 +16,7 @@ router.get('/user/create', user_controller.create_user_get);
 
 router.post('/user/create', user_controller.create_user_post);
 
-router.get('/user/:id', user_controller.user_detail);
+router.get('/user/:id', user_controller.user_dashboard);
 
 /// message routes ///
 

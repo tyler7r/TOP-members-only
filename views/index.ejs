@@ -6,18 +6,15 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <% if (user) {%>
-        <h2>Welcome Back: <%= user.username %></h2>
-    <% } else { %>
-        <h2>Please Log In</h2>
-        <form action="" method="POST">
-            <label for="username">Username: </label>
-            <input name="username" type="text" />
-            <label for="password">Password: </label>
-            <input name="password" type="text" />
-            <button type="submit">Log In</button>
-        </form>
-    <%}%>
+      <h2>Please Log In</h2>
+      <form action="" method="POST">
+          <label for="username">Username: </label>
+          <input name="username" type="text" />
+          <label for="password">Password: </label>
+          <input name="password" type="text" />
+          <button type="submit">Log In</button>
+      </form>
+    <div><%= messages %></div>
     <a href="/user/create">Sign Up</a>
   </body>
 </html>

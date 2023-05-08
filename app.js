@@ -41,7 +41,7 @@ passport.use(
         if (res) {
           return done(null, user)
         } else {
-          return done(null, false, { message: "Incorrect Password"})
+          return done(err, false, { message: "Incorrect Password"})
         }
       })
     } catch (err) {
@@ -79,6 +79,15 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/yachtclub', clubRouter);
+
+app.get('/log-out', (req, res, next) => {
+  req.logout(function (err) {
+      if (err) {
+          return next(err)
+      }
+      res.redirect('/')
+  })
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,27 +4,34 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult, check } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
 exports.log_in_get = asyncHandler(async (req, res, next) => {
     res.render('index', { 
         title: 'Welcome to the Yacht Club',
         user: req.user,
+        messages: req.session.messages,
     })
+    req.session.messages = [];
 })
 
 exports.log_in_post = [
     body('username', "Username must be specified").trim().isLength({ min: 2 }).escape(),
     body('password', 'Password must be specified').trim().isLength({ min: 4 }).escape(),
-
     passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/'
-    })
+        failureRedirect: '/',
+        failureMessage: "Incorrect Password",
+    }),
+    (req, res) => {
+        res.redirect(req.user.url)
+    }
 ]
 
-exports.user_detail = asyncHandler(async (req, res, next) => {
-
+exports.user_dashboard = asyncHandler(async (req, res, next) => {
+    console.log(req.user);
+    res.render('dashboard', {
+        user: req.user,
+        title: "User Dashboard",
+    })
 })
 
 exports.create_user_get = asyncHandler(async (req, res, next) => {
@@ -48,7 +55,6 @@ exports.create_user_post = [
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req)
-        console.log(req.body);
 
         const user = new User({
             first_name: req.body.first_name,
@@ -57,7 +63,6 @@ exports.create_user_post = [
             password: req.body.password_sign_up,
         })
         if (!errors.isEmpty()) {
-            console.log(errors.array());
             res.render('user_create', {
                 title: 'Sign Up!',
                 errors: errors.array(),
@@ -72,12 +77,9 @@ exports.create_user_post = [
             } else {
                 bcrypt.hash(user.password, 10, async(err, hashedPassword) => {
                     if (err) {
-                        console.log('hash error');
                         return new Error('Hashing did not work')
                     } else {
-                        console.log('password was hashed');
                         user.password = hashedPassword;
-                        console.log(user);
                         await user.save();
                         res.redirect('/');
                     }
