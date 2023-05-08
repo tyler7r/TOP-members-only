@@ -11,10 +11,6 @@ exports.log_in_get = asyncHandler(async (req, res, next) => {
     })
 })
 
-exports.log_in_post = asyncHandler(async (req, res, next) => {
-
-})
-
 exports.user_detail = asyncHandler(async (req, res, next) => {
 
 })

@@ -9,8 +9,6 @@ const club_controller = require('../controllers/clubController');
 
 router.get('/', user_controller.log_in_get);
 
-router.post('/', user_controller.log_in_post);
-
 router.get('/user/create', user_controller.create_user_get);
 
 router.post('/user/create', user_controller.create_user_post);
