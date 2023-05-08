@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <form action="" method="POST">
+          <label for="first_name">First: </label>
+          <input name="first_name" type="text" required/>
+          <label for="last_name">Last: </label>
+          <input name="last_name" type="text" required/>
+          <label for="username_sign_up">Username: </label>
+          <input name="username_sign_up" type="text" required/>
+          <label for="password_sign_up">Password: </label>
+          <input name="password_sign_up" type="text" required/>
+          <label for="confirm_password">Confirm Password: </label>
+          <input name="confirm_password" type="text" required/>
+          <button type="submit">Sign Up</button>
+      </form>
+  </body>
+</html>

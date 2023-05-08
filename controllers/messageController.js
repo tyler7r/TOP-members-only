@@ -11,7 +11,9 @@ exports.message_detail = asyncHandler(async (req, res, next) => {
 })
 
 exports.create_message_get = asyncHandler(async (req, res, next) => {
-
+    res.render('index', {
+        title: "Create Message",
+    })
 })
 
 exports.create_message_post = asyncHandler(async (req, res, next) => {

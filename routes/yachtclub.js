@@ -7,23 +7,25 @@ const club_controller = require('../controllers/clubController');
 
 /// user routes ///
 
-router.get('/', user_controller.log_in);
+router.get('/', user_controller.log_in_get);
 
-router.get('/user/:id', user_controller.user_detail);
+router.post('/', user_controller.log_in_post);
 
 router.get('/user/create', user_controller.create_user_get);
 
 router.post('/user/create', user_controller.create_user_post);
 
+router.get('/user/:id', user_controller.user_detail);
+
 /// message routes ///
 
 router.get('/messages', message_controller.all_messages);
 
-router.get('/message/:id', message_controller.message_detail);
-
 router.get('/message/create', message_controller.create_message_get);
 
 router.post('/message/create', message_controller.create_message_post);
+
+router.get('/message/:id', message_controller.message_detail);
 
 /// club routes ///
 

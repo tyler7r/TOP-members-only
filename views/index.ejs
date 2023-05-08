@@ -6,6 +6,18 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p><%= title %></p>
+    <% if (user) {%>
+        <h2>Welcome Back: <%= user.username %></h2>
+    <% } else { %>
+        <h2>Please Log In</h2>
+        <form action="" method="POST">
+            <label for="username_log_in">Username: </label>
+            <input name="username_log_in" type="text" />
+            <label for="password_log_in">Password: </label>
+            <input name="password_log_in" type="text" />
+            <button type="submit">Log In</button>
+        </form>
+    <%}%>
+    <a href="/yachtclub/user/create">Sign Up</a>
   </body>
 </html>
