@@ -3,6 +3,8 @@ const Message = require('../models/message');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult, check } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 exports.log_in_get = asyncHandler(async (req, res, next) => {
     res.render('index', { 
@@ -10,6 +12,16 @@ exports.log_in_get = asyncHandler(async (req, res, next) => {
         user: req.user,
     })
 })
+
+exports.log_in_post = [
+    body('username', "Username must be specified").trim().isLength({ min: 2 }).escape(),
+    body('password', 'Password must be specified').trim().isLength({ min: 4 }).escape(),
+
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/'
+    })
+]
 
 exports.user_detail = asyncHandler(async (req, res, next) => {
 

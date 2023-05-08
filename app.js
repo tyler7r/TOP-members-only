@@ -34,7 +34,6 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const user = await User.findOne({ username: username });
-      console.log(username, password);
       if (!user) {
         return done(null, false, { message: "Incorrect Username" })
       }
@@ -81,14 +80,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/yachtclub', clubRouter);
 
-app.post(
-  '/yachtclub',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/',
-  })
-)
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -105,4 +96,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app, passport;
