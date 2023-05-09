@@ -26,7 +26,7 @@ router.get('/message/create/:id', message_controller.create_message_get);
 
 router.post('/message/create/:id', message_controller.create_message_post);
 
-router.get('/message/:id', message_controller.message_detail);
+router.get('/messages/:id', message_controller.message_detail);
 
 /// club routes ///
 

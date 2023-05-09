@@ -25,7 +25,22 @@ exports.all_messages = asyncHandler(async (req, res, next) => {
 })
 
 exports.message_detail = asyncHandler(async (req, res, next) => {
+    const message = await Message.findById(req.params.id).populate('author').exec();
+    const user = await User.findById(res.locals.currentUser._id).exec();
 
+    if (user.status === true) {
+        res.render('message_detail', {
+            title: message.title,
+            message: message,
+            member: true, 
+        })
+    } else {
+        res.render('message_detail', {
+            title: message.title,
+            message: message,
+            member: false,
+        })
+    }
 })
 
 exports.create_message_get = asyncHandler(async (req, res, next) => {

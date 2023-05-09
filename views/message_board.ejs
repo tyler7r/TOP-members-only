@@ -11,7 +11,7 @@
             <% for (let i = 0; i < messages.length; i++ ) { %>
                 <div>
                     <%= messages[i].author.fullname %>
-                    <%= messages[i].title %>
+                    <a href='<%= messages[i].url %>'><%= messages[i].title %></a>
                     <%= messages[i].message %>
                 <div>
     
@@ -21,7 +21,7 @@
         <ul>
             <% for (let i = 0; i < messages.length; i++ ) { %>
                 <div>
-                    <%= messages[i].title %>
+                    <a href='<%= messages[i].url %>'><%= messages[i].title %></a>
                     <%= messages[i].message %>
                 <div>
     
